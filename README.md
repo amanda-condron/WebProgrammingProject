@@ -1,2 +1,2 @@
-Web Programming Project
+Web Programming Project: Dog Breeds
 Amanda Condron

@@ -11339,6 +11339,40 @@ header.masthead h1, header.masthead .h1 {
   }
 }
 
+
+
+header.hiddenForm {
+  position: relative;
+  background-color: wheat;
+  background: white no-repeat center center;
+  background-size: cover;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+header.hiddenForm:before {
+  content: "";
+  position: absolute;
+  background-color: #1c375e;
+  height: 65%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+header.hiddenForm h1, header.hiddenForm .h1 {
+  font-size: 2rem;
+}
+@media (min-width: 768px) {
+  header.hiddenForm {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  header.hiddenForm h1, header.hiddenForm .h1 {
+    font-size: 3rem;
+  }
+}
+
+
 .showcase .showcase-text {
   padding: 3rem;
 }

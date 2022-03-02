@@ -12,9 +12,11 @@ btn.addEventListener('click', () => {
     const form = document.getElementById('form');
 
     if(form.style.display == 'none'){
+        document.getElementById('btn').innerHTML = "Click to close Form";
         form.style.display = 'block';
     }
     else{
         form.style.display = 'none';
+        document.getElementById('btn').innerHTML = "Click to view Form";
     }
 });

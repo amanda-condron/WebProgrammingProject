@@ -9,3 +9,13 @@ exports.smallDogs = [
     { _id:8,name:'Italian Greyhound', weight:'7.9 - 11 lbs', lifeExp:'12 - 15 years', description:2}
 
 ];
+
+exports.readAll = function(){
+    return exports.smallDogs;
+}
+
+exports.read = function(id){
+    let index = pos(id);
+    if(index >= 0) return exports.smallDogs[index];
+    else return null;
+}

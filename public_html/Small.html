@@ -41,8 +41,13 @@
     </header>
 
 
+    <div class="container">
+        <div id="SmallDogData"> 
+        </div>
+      </div>
+
     <!-- Display of Different Small Dogs -->
-<!--<section class="showcase">
+<!-- <section class="showcase">
         <div class="container-fluid">
             <div class="row g-0">
                 <div class="col-lg-6 order-lg-1 text-white showcase-img" style="background-image: url('assets/img/dog1.jpg')"></div>
@@ -81,25 +86,33 @@
     <script>
 
         let smallDogs = [];
-        const readSmallDogs = async function() {
+        async function getSmallDogs() {
             const response = await fetch('http://localhost:4000/smallDog');
             smallDogs = await response.json();
-            let out = `<table class="table table-striped table-hover">
+            let out = `<table class="table table-striped table-hover" style="width:100%">
                 <thead>
                     <tr>
                         <th> ID </th>
                         <th> Name </th>
+                        <th> Average Weight </th>
+                        <th> Life Expectancy </th>
+                        <th> Description </th>
                     </tr>
                 </thead>`;
             for(let i = 0; i < smallDogs.length; i++)
             {
-                out += `<tr> <td> ${smallDogs[i]._id} </td>
-                    <td> ${smallDogs[i].name} </td></tr>`;
+                out += `<tr><td> ${smallDogs[i]._id} </td>
+                    <td> ${smallDogs[i].name} </td>
+                    <td> ${smallDogs[i].weight} </td>
+                    <td> ${smallDogs[i].lifeExp} </td>
+                    <td> ${smallDogs[i].description} </td></tr>`;
             }                         
             out += `<table>`;                                                                
             //JSON.stringify(smallDogs);
             document.getElementById('SmallDogData').innerHTML = out;
         }
+
+        getSmallDogs();
 
     </script>
 
@@ -115,3 +128,14 @@
      <!-- Core theme JS-->
     <!-- <script src="js/scripts.js"></script> -->
     <!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+
+
+    <!--
+        <colgroup>
+                    <col span="1" style="width=10%;">
+                    <col span="1" style="width=20%;">
+                    <col span="1" style="width=20%;">
+                    <col span="1" style="width=20%;">
+                    <col span="1" style="width=30%;">
+                </colgroup>
+    -->

@@ -121,11 +121,11 @@
         </header>
 
         <!-- FORM FOR SUBMITTING NEW DOG BREED-->
-        <form id="form" style="display: none;">
+        <form id="form" style="display: none;" method="post" action="/usersDogs">
             <div class="form-row">
                 <div class="form-group col-md-6 mx-auto p-3">
                     <label for="inputEmail">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
                 </div>
                 <div class="form-group col-md-6 mx-auto p-3">
                     <label class="col-form-label col-md-3" for="txt_id"> ID: </label>
@@ -135,7 +135,7 @@
                 </div>
                 <div class="form-group col-md-6 mx-auto p-3">
                     <label for="dogName">Dog Breed Name</label>
-                    <input type="text" class="form-control" id="breed_name" placeholder="Dog Breed Name">
+                    <input type="text" class="form-control" name="breed_name" id="breed_name" placeholder="Dog Breed Name">
                 </div>
                 <div class="form-group col-md-6 mx-auto p-3">
                     <label for="selectSize">Select Size Category</label>
@@ -147,15 +147,15 @@
                 </div>
                 <div class="form-group col-md-6 mx-auto p-3">
                     <label for="dogName">Dog Weight</label>
-                    <input type="text" class="form-control" id="dog_weight" placeholder="Weight">
+                    <input type="text" class="form-control" name="dog_weight" id="dog_weight" placeholder="Weight">
                 </div>
                 <div class="form-group col-md-6 mx-auto p-3">
                     <label for="dogName">Life Expectancy</label>
-                    <input type="text" class="form-control" id="dog_LifeExp" placeholder="Life Expectancy">
+                    <input type="text" class="form-control" name="dog_LifeExp" id="dog_LifeExp" placeholder="Life Expectancy">
                 </div>
                 <div class="form-group col-md-6 mx-auto p-3">
                     <label for="description">Description of Dog</label>
-                    <textarea class="form-control" id="dog_description" rows="4"></textarea>
+                    <textarea class="form-control" name="dog_description" id="dog_description" rows="4"></textarea>
                 </div>
                 <div class="form-group col-md-12 p-3">
                     <div class="mx-auto" style="width: 200px;">

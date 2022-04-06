@@ -71,9 +71,7 @@ app.get('/smallDog/:id', function(res,req){
 });
 
 
-const usersDogs = [
-    {_id:1, name:'Name of the Dog Breed', weight:'Weight of Dog', lifeExp:'LifeExpectancy', description:'Description of the Dog'}
-];
+const usersDogs = [];
 
 app.get('/usersDogs', function(req,res){
     res.status(200);

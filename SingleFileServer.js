@@ -28,6 +28,15 @@ const smallDogs = [
     { _id:14,name:'Chinese Crested', weight:'8 - 12 lbs', lifeExp:'13 - 18 years', description:'Lively, alert and loving, the Chinese crested can be hairless or coated, and comes in a variety of colors. If you choose a hairless crested, shedding and doggy odor will not be much of a problem, but they are less likely to tolerate cold, so keep them covered.'},
     { _id:15,name:'Minature Pinscher', weight:'8 - 10 lbs', lifeExp:'12 - 16 years', description:'This “King of the Toys" is energetic and smart, and is best suited to an owner who can reign in their willful personality. On the plus side, the mini pin is fun-loving and endlessly entertaining, and has a short coat that is easy to groom.'},
     { _id:16,name:'Cavalier King Charles Spaniel', weight:'13 - 18 lbs', lifeExp:'12 - 15 years', description:'The pampered Cavalier King Charles spaniel is refined and graceful with a royal lineage, but also a down-to-earth companion for any member of the family.'},
+    { _id:17,name:'Boston Terrier', weight:'12 - 24 lbs', lifeExp:'11 - 13 years', description:'Bostons are smart, but as their fighter instinct is still very much a part of who they are, they can be extremely stubborn, so make sure yours has the proper training. Once they do, the spunky, loving and affectionate Boston thrives in every setting or situation.'},
+    { _id:18,name:'Havanese', weight:'7 - 13 lbs', lifeExp:'14 - 16 years', description:'Havanese pups are "on" all the time, meaning if they have an audience they are more than willing to entertain. The breed makes a welcome addition to any family, but make sure to keep your Havanese groomed — their lux coats require daily brushing.'},
+    { _id:19,name:'Norwich Terrier', weight:'12 lbs', lifeExp:'12 - 15 years', description:'This fearless, sturdy breed has boundless energy for play but is also just as content being a lapdog. Remember to keep Norwich terriers safely leashed or within your yard, as these dogs have a high drive for small prey.'},
+    { _id:20,name:'Pekingese', weight:'10 - 14 lbs', lifeExp:'12 - 14 years', description:'This fluffy bundle was once the dog of Chinese royalty and still carries some personality traits of that former life. They can be affectionate or independent and will do whatever suits them at the moment.'},
+    { _id:21,name:'Schipperke', weight:'10 - 16 lbs', lifeExp:'12 - 14 years', description:'The Schipperke is often called "the little black devil" because the breed can be quite mischievous. They’re sturdy, stubborn and smart, which may not be the best traits for every household, as they may end up running it.'},
+    { _id:22,name:'Toy American Eskimo', weight:'6 - 10 lbs', lifeExp:'13 - 15 years', description:'This breed’s soft plumes of white hair have garnered the nickname "The Dog Beautiful." But this dog is not just all looks — they are smart, energetic and have an endless curiosity, which means they’re up for just about any great adventure.'},
+    { _id:23,name:'German Spitz', weight:'20 - 24 lbs', lifeExp:'13 - 15 years', description:'This foot-tall ball of fluff looks like a larger Pomeranian, but that is where the similarity ends. The spitz is also a working dog who was bred to hunt small prey.'},
+    { _id:24,name:'Lowchen', weight:'15 lbs', lifeExp:'13 - 15 years', description:'The Lowchen or “little lion dog” hails from France and Germany and was bred as a royal footwarmer with a distinctive haircut that leaves them fluffy at the front and naked in back. This rare breed has been around since at least the 16th century.'},
+    { _id:25,name:'Papillon', weight:'5 - 10 lbs', lifeExp:'14 - 16 years', description:'The Pap looks like a dainty lap dog with a plumed tail but is nonetheless robust and eager to play. The breed does well in agility competitions and thrives in any climate or home setting.'},
 
 ];
 
@@ -37,6 +46,7 @@ app.get('/smallDog',function(req,res){ // REST get (all) method
     res.end(); 
 });
 
+//gets one dog based on id
 app.get('/smallDog/:id', function(res,req){
     let id = parseInt(req.params.id);
     let smallDog = null;
@@ -59,6 +69,57 @@ app.get('/smallDog/:id', function(res,req){
     res.end();
 
 });
+
+
+const usersDogs = [
+    {_id:1, name:'Name of the Dog Breed', weight:'Weight of Dog', lifeExp:'LifeExpectancy', description:'Description of the Dog'}
+];
+
+app.get('/usersDogs', function(req,res){
+    res.status(200);
+    res.send(usersDogs);
+    res.end();
+});
+
+
+//GETTING INPUT FROM THE FORM
+app.post('/usersDogs', function(req, res){
+    let newDog = {};
+    newDog.name = req.body.breed_name;
+    newDog.weight = req.body.dog_weight;
+    newDog.lifeExp = req.body.dog_LifeExp;
+    newDog.description = req.body.dog_description;
+    if(req.body.txt_id){
+        console.log('Update user');
+    }
+    else {
+        if(usersDogs.length > 0) newDog._id = (usersDogs[usersDogs.length-1]._id)+1;
+        else newDog._id = 1;
+
+        usersDogs.push(newDog);
+    }
+    res.redirect('index.html');
+
+});
+
+//UPDATE THE NEWDOG
+/*app.post('/usersDogs', function(req, res){
+    let newDog = {};
+    newDog.name = req.body.BreedName;
+    newDog.weight = req.body.dogWeight;
+    newDog.lifeExp = req.body.dogLifeExpectancy;
+    newDog.description = req.body.description;
+    newDog._id = req.body._id;
+    for(let i = 0; i < usersDogs.length; i++)
+    {
+        if(usersDogs[i]._id === newDog._id)
+        {
+            newDog[i] = newDog;
+            break;
+        }
+    }
+    res.redirect('index.html');
+}) */
 
 
 

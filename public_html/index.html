@@ -112,6 +112,7 @@
                         <h4 class="p-1 mb-5 text-center "> If we don't have the dog breed that you are looking for,
                             please fill out this form with all the appropriate information and we will consider
                             adding it! </h4>
+                        <h4 class="p-1 mb-5">Below you will find a list of the different dogs you have submitted.</h4>
                         <button class="btn btn-primary btn-lg" id="btn">Click to view Form</button>
                         <script src="/public_html/js/scripts.js"></script>
                     </div>
@@ -127,12 +128,18 @@
                     <input type="email" class="form-control" id="email" placeholder="name@example.com">
                 </div>
                 <div class="form-group col-md-6 mx-auto p-3">
+                    <label class="col-form-label col-md-3" for="txt_id"> ID: </label>
+                    <div class="col-12 col-md">
+                        <input class="form-control" type="text" name="txt_id" id="txt_id" placeholder="We will complete this box for you" autocomplete="off" readonly />
+                    </div>
+                </div>
+                <div class="form-group col-md-6 mx-auto p-3">
                     <label for="dogName">Dog Breed Name</label>
-                    <input type="text" class="form-control" id="BreedName" placeholder="Dog Breed Name">
+                    <input type="text" class="form-control" id="breed_name" placeholder="Dog Breed Name">
                 </div>
                 <div class="form-group col-md-6 mx-auto p-3">
                     <label for="selectSize">Select Size Category</label>
-                        <select class="form-control" id="selectSize">
+                        <select class="form-control" id="selectDogSize">
                             <option>Small</option>
                             <option>Medium</option>
                             <option>Large</option>
@@ -140,19 +147,19 @@
                 </div>
                 <div class="form-group col-md-6 mx-auto p-3">
                     <label for="dogName">Dog Weight</label>
-                    <input type="text" class="form-control" id="dogWeight" placeholder="Weight">
+                    <input type="text" class="form-control" id="dog_weight" placeholder="Weight">
                 </div>
                 <div class="form-group col-md-6 mx-auto p-3">
                     <label for="dogName">Life Expectancy</label>
-                    <input type="text" class="form-control" id="lifeExpectancy" placeholder="Life Expectancy">
+                    <input type="text" class="form-control" id="dog_LifeExp" placeholder="Life Expectancy">
                 </div>
                 <div class="form-group col-md-6 mx-auto p-3">
                     <label for="description">Description of Dog</label>
-                    <textarea class="form-control" id="description" rows="4"></textarea>
+                    <textarea class="form-control" id="dog_description" rows="4"></textarea>
                 </div>
                 <div class="form-group col-md-12 p-3">
                     <div class="mx-auto" style="width: 200px;">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Send</button>
                     </div>
                 </div>
                 <div class="form-group col-md-12 p-3">
@@ -162,8 +169,12 @@
                 </div>
             </div>
         </form>
-        
-        
+
+        <!-- Table of Users Dogs-->
+        <div class="container">
+            <div id="UsersDogsData"> </div>
+        </div>
+
         <!-- Footer-->
         <footer class="footer bg-opacity-50">
             <div class="container">
@@ -181,6 +192,46 @@
         </footer>
        
        
+        <script>
+
+            let usersDogs = [];
+            async function getusersDogs() {
+                const response = await fetch('http://localhost:4000/usersDogs');
+                usersDogs = await response.json();
+                let out = `
+                <table class="table table-striped table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th> ID </th>
+                            <th> Name </th>
+                            <th> Average Weight </th>
+                            <th> Life Expectancy </th>
+                            <th> Description </th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+                        for(let i = 0; i < usersDogs.length; i++)
+                        {
+                            out += `<tr><td> ${usersDogs[i]._id} </td>
+                                <td> ${usersDogs[i].name} </td>
+                                <td> ${usersDogs[i].weight} </td>
+                                <td> ${usersDogs[i].lifeExp} </td>
+                                <td> ${usersDogs[i].description} </td></tr>`;
+                        }                         
+                        out += `</tbody>
+                <table>`;                                                                
+                JSON.stringify(usersDogs);
+                document.getElementById('UsersDogsData').innerHTML = out;
+            }
+    
+            getusersDogs();
+    
+        </script>
+
+
+
+
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

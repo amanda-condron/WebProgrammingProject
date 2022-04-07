@@ -47,22 +47,31 @@ exports.del = function(id){
 }*/
 
 exports.update = function(newDog){
-        let index = 1;
-        let existingDog = {};
-        existingDog._id = newDog._id;
-        console.log('exisitng DOG ID IS: ', existingDog._id);
-        if(existingDog.name !== newDog.name)
-            existingDog.name = newDog.name;
-        if(existingDog.weight !== newDog.weight)
-            existingDog.weight = newDog.weight;
-        if(existingDog.lifeExp !== newDog.lifeExp)
-            existingDog.lifeExp = newDog.lifeExp;
-        if(existingDog.description !== newDog.description)
-            existingDog.description = newDog.description;
-        
-        exports.usersDogs.splice(newDog._id,1);
-        exports.usersDogs.splice(newDog._id, 0, existingDog);
-        return existingDog;
+    let index = 1;
+    let dogID = parseInt(newDog.txt_id);
+    let existingDog = {};
+    if(existingDog.name !== newDog.name)
+        existingDog.name = newDog.name;
+    if(existingDog.weight !== newDog.weight)
+        existingDog.weight = newDog.weight;
+    if(existingDog.lifeExp !== newDog.dog_LifeExp)
+        existingDog.lifeExp = newDog.dog_LifeExp;
+    if(existingDog.description !== newDog.description)
+        existingDog.description = newDog.description;
+    existingDog._id = dogID;
+    console.log('DOGID:', existingDog._id);
+    for(let i = 0; i<exports.usersDogs.length; i++)
+    {
+        if(exports.usersDogs[i]._id === dogID )
+        {
+            index = i;
+            break;
+        }
+    }
+    exports.usersDogs.splice(index,1);
+    exports.usersDogs.splice(index, 0, existingDog);
+
+    return existingDog;
 }
 
 function pos(id){

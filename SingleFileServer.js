@@ -77,17 +77,16 @@ const usersDogs = [
     { _id:2,name:'Lowchen', weight:'15 lbs', lifeExp:'13 - 15 years', description:'The Lowchen or “little lion dog” hails from France and Germany and was bred as a royal footwarmer with a distinctive haircut that leaves them fluffy at the front and naked in back. This rare breed has been around since at least the 16th century.'},
     { _id:3,name:'Papillon', weight:'5 - 10 lbs', lifeExp:'14 - 16 years', description:'The Pap looks like a dainty lap dog with a plumed tail but is nonetheless robust and eager to play. The breed does well in agility competitions and thrives in any climate or home setting.'},
 
-
 ];
 
 app.get('/usersDogs', function(req,res){
     res.status(200);
-    res.send(usersDogs);
+    res.send(usersDogs);    //res.send(dao.readAll());
     res.end();
 });
 
 
-//GETTING INPUT FROM THE FORM
+//CREATE DOG AND UPDATE DOG
 app.post('/usersDogs', function(req, res){
     let newDog = {};
     newDog.name = req.body.breed_name;
@@ -130,25 +129,6 @@ app.post('/usersDogs', function(req, res){
 
 });
 
-//UPDATE THE NEWDOG
-/*app.post('/updateusersDogs', function(req, res){
-    let newDog = {};
-    newDog.name = req.body.BreedName;
-    newDog.weight = req.body.dogWeight;
-    newDog.lifeExp = req.body.dogLifeExpectancy;
-    newDog.description = req.body.description;
-    newDog._id = req.body._id;
-    for(let i = 0; i < usersDogs.length; i++)
-    {
-        if(usersDogs[i]._id === newDog._id)
-        {
-            newDog[i] = newDog;
-            break;
-        }
-    }
-    res.redirect('index.html');
-});*/
-
 //DELETE A DOG FROM THE TABLE
 app.get('/delusersDogs/:id', function(req, res) {
     let id = parseInt(req.params.id);
@@ -168,12 +148,6 @@ app.get('/delusersDogs/:id', function(req, res) {
 
     res.redirect('../index.html');
 });
-
-//UPDATE A DOG ON THE TABLE
-
-
-
-
 
 
 app.listen(port,hostname,function(){ // Listen to client requests in hostname:port

@@ -12,7 +12,7 @@ app.use(express.static('public_html'));
 app.get('/usersDogs', usersDogCont.getAll);
 app.get('/usersDogs/:id', usersDogCont.get);
 app.post('/usersDogs', usersDogCont.postCreateOrUpdate);
-app.get('/delusersDog/:id', usersDogCont.deleteOne);
+app.get('/delusersDogs/:id', usersDogCont.deleteOne);
 app.post('/usersDogs', usersDogCont.postCreateOrUpdate);
 
 exports.app = app;

@@ -29,7 +29,7 @@ exports.del = function(id){
     let index = pos(id);
     let deleteDog = null;
     if(index >= 0){
-        deteleDog = exports.usersDogs[index];
+        deleteDog = exports.usersDogs[index];
         exports.usersDogs.splice(index, 1);
     }
     return deleteDog;

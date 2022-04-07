@@ -30,7 +30,7 @@ exports.postCreateOrUpdate = function(req,res){
     let newDog = {};
     newDog.name = req.body.breed_name;
     newDog.weight = req.body.dog_weight;
-    newDog.dog_LifeExp = req.body.dog_LifeExp;
+    newDog.lifeExp = req.body.dog_LifeExp;
     newDog.description = req.body.dog_description;
 
     if(req.body.txt_id)
@@ -48,7 +48,7 @@ exports.postCreateOrUpdate = function(req,res){
 
 //DELETE A DOG
 exports.deleteOne = function(req,res){
-    let id = req.params.id;
+    let id = parseInt(req.params.id);
     dao.del(id);
     res.redirect('../index.html');
 }

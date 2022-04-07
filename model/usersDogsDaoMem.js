@@ -35,29 +35,15 @@ exports.del = function(id){
     return deleteDog;
 }
 
-/*exports.update = function(newDog){
-    let index = pos(id);
-    let existingDog = null;
-    if(index >= 0)
-    {
-        exports.usersDogs[index] = existingDog;
-        exports.usersDogs.splice(index, 0, existingDog);
-    }
-    return existingDog;
-}*/
 
 exports.update = function(newDog){
     let index = 1;
     let dogID = parseInt(newDog.txt_id);
     let existingDog = {};
-    if(existingDog.name !== newDog.name)
-        existingDog.name = newDog.name;
-    if(existingDog.weight !== newDog.weight)
-        existingDog.weight = newDog.weight;
-    if(existingDog.lifeExp !== newDog.dog_LifeExp)
-        existingDog.lifeExp = newDog.dog_LifeExp;
-    if(existingDog.description !== newDog.description)
-        existingDog.description = newDog.description;
+    existingDog.name = newDog.name;
+    existingDog.weight = newDog.weight;
+    existingDog.lifeExp = newDog.lifeExp;
+    existingDog.description = newDog.description;
     existingDog._id = dogID;
     console.log('DOGID:', existingDog._id);
     for(let i = 0; i<exports.usersDogs.length; i++)

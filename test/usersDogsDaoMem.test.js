@@ -21,19 +21,18 @@ test('Testing Create New Dog', function(){
     expect(allDogs).toContain(saved);
 });
 
-test('Testing Update Dog', function(){
-    let allDogs = dao.readAll();
-    let idDogToBeUpdated = allDogs.length/2;
-    if(allDogs.length > 0){
-        let existingDog = dao.read(idDogToBeUpdated);
-        existingDog.description = 'New Test Description';
-        let saved = dao.update(existingDog);
-        let newDogs = dao.readAll();
-        expect(newDogs).toContain(saved);
+test('Testing Delete a Dog', function(){
+    let beforeSize = dao.readAll().length;
+    if(beforeSize > 0){
+        let deleteDog = dao.del(1);
+        let allDogs = dao.readAll();
+        expect(allDogs.length).toBe(beforeSize-1);
     }
     
-})
+});
 
-test('Useless test', function(){
-    expect(1).toBe(1);
+test('Testing Update Dog', function(){
+    let allDogs = dao.readAll();
+    let updatedDog = dao.update(1);
+    expect(allDogs).toContain(updatedDog);   
 });

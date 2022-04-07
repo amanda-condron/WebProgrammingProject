@@ -71,7 +71,14 @@ app.get('/smallDog/:id', function(res,req){
 });
 
 
-const usersDogs = [];
+const usersDogs = [
+
+    { _id:1,name:'German Spitz', weight:'20 - 24 lbs', lifeExp:'13 - 15 years', description:'This foot-tall ball of fluff looks like a larger Pomeranian, but that is where the similarity ends. The spitz is also a working dog who was bred to hunt small prey.'},
+    { _id:2,name:'Lowchen', weight:'15 lbs', lifeExp:'13 - 15 years', description:'The Lowchen or “little lion dog” hails from France and Germany and was bred as a royal footwarmer with a distinctive haircut that leaves them fluffy at the front and naked in back. This rare breed has been around since at least the 16th century.'},
+    { _id:3,name:'Papillon', weight:'5 - 10 lbs', lifeExp:'14 - 16 years', description:'The Pap looks like a dainty lap dog with a plumed tail but is nonetheless robust and eager to play. The breed does well in agility competitions and thrives in any climate or home setting.'},
+
+
+];
 
 app.get('/usersDogs', function(req,res){
     res.status(200);
@@ -88,7 +95,30 @@ app.post('/usersDogs', function(req, res){
     newDog.lifeExp = req.body.dog_LifeExp;
     newDog.description = req.body.dog_description;
     if(req.body.txt_id){
-        console.log('Update user');
+        let index = 1;
+        let dogID = parseInt(req.body.txt_id);
+        let existingDog = {};
+        if(existingDog.name !== req.body.breed_name)
+            existingDog.name = req.body.breed_name;
+        if(existingDog.weight !== req.body.dog_weight)
+            existingDog.weight = req.body.dog_weight;
+        if(existingDog.lifeExp !== req.body.dog_LifeExp)
+            existingDog.lifeExp = req.body.dog_LifeExp;
+        if(existingDog.description !== req.body.dog_description)
+            existingDog.description = req.body.dog_description;
+        existingDog._id = parseInt(req.body.txt_id);
+        for(let i = 0; i<usersDogs.length; i++)
+        {
+            if(usersDogs[i]._id === dogID )
+            {
+                index = i;
+                break;
+            }
+        }
+        usersDogs.splice(index,1);
+        usersDogs.splice(index, 0, existingDog);
+ 
+        console.log('Update user'); 
     }
     else {
         if(usersDogs.length > 0) newDog._id = (usersDogs[usersDogs.length-1]._id)+1;
@@ -101,7 +131,7 @@ app.post('/usersDogs', function(req, res){
 });
 
 //UPDATE THE NEWDOG
-/*app.post('/usersDogs', function(req, res){
+/*app.post('/updateusersDogs', function(req, res){
     let newDog = {};
     newDog.name = req.body.BreedName;
     newDog.weight = req.body.dogWeight;
@@ -117,7 +147,30 @@ app.post('/usersDogs', function(req, res){
         }
     }
     res.redirect('index.html');
-}) */
+});*/
+
+//DELETE A DOG FROM THE TABLE
+app.get('/delusersDogs/:id', function(req, res) {
+    let id = parseInt(req.params.id);
+    let index = 1;
+    for(let i = 0; i<usersDogs.length; i++)
+    {
+        if(usersDogs[i]._id === id )
+        {
+            index = i;
+            break;
+        }
+    }
+    if(index >= 0)
+    { 
+        usersDogs.splice(index,1);
+    }
+
+    res.redirect('../index.html');
+});
+
+//UPDATE A DOG ON THE TABLE
+
 
 
 

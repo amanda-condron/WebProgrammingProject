@@ -9,7 +9,7 @@
 const btn = document.getElementById('btn')
 
 btn.addEventListener('click', () => {
-    const form = document.getElementById('form');
+    const form = document.getElementById('newDogForm');
 
     if(form.style.display == 'none'){
         document.getElementById('btn').innerHTML = "Click to close Form";

@@ -121,54 +121,58 @@
         </header>
 
         <!-- FORM FOR SUBMITTING NEW DOG BREED-->
-        <form id="form" style="display: none;" method="post" action="/usersDogs">
-            <div class="form-row">
-                <div class="form-group col-md-6 mx-auto p-3">
-                    <label for="inputEmail">Email address</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
-                </div>
-                <div class="form-group col-md-6 mx-auto p-3">
-                    <label class="col-form-label col-md-3" for="txt_id"> ID: </label>
-                    <div class="col-12 col-md">
-                        <input class="form-control" type="text" name="txt_id" id="txt_id" placeholder="We will complete this box for you" autocomplete="off" readonly />
+        <div class="Outline" id="OutlineForm">
+            <form id="newDogForm" style="display: none;" method="post" action="/usersDogs">
+                <div class="form-row" id="inNewDogForm">
+                    <div class="container" id="TotalForm">
+                        <div class="form-group col-md-6 mx-auto p-3">
+                            <label for="inputEmail">Email address</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+                        </div>
+                        <div class="form-group col-md-6 mx-auto p-3" name="form_id" >
+                            <label class="col-form-label col-md-3" for="txt_id"> ID: </label>
+                            <div class="col-12 col-md">
+                                <input class="form-control" type="text" name="txt_id" id="txt_id" placeholder="We will complete this box for you" autocomplete="off" readonly />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6 mx-auto p-3">
+                            <label for="dogName">Dog Breed Name</label>
+                            <input type="text" class="form-control" name="breed_name" id="breed_name" placeholder="Dog Breed Name">
+                        </div>
+                        <div class="form-group col-md-6 mx-auto p-3">
+                            <label for="selectSize">Select Size Category</label>
+                                <select class="form-control" id="selectDogSize">
+                                    <option>Small</option>
+                                    <option>Medium</option>
+                                    <option>Large</option>
+                                </select>
+                        </div>
+                        <div class="form-group col-md-6 mx-auto p-3">
+                            <label for="dogName">Dog Weight</label>
+                            <input type="text" class="form-control" name="dog_weight" id="dog_weight" placeholder="Weight">
+                        </div>
+                        <div class="form-group col-md-6 mx-auto p-3">
+                            <label for="dogName">Life Expectancy</label>
+                            <input type="text" class="form-control" name="dog_LifeExp" id="dog_LifeExp" placeholder="Life Expectancy">
+                        </div>
+                        <div class="form-group col-md-6 mx-auto p-3">
+                            <label for="description">Description of Dog</label>
+                            <textarea class="form-control" name="dog_description" id="dog_description" rows="4"></textarea>
+                        </div>
+                        <div class="form-group col-md-12 p-3">
+                            <div class="mx-auto" style="width: 200px;">
+                                <button type="submit" class="btn btn-primary">Send</button>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12 p-3">
+                            <div class="mx-auto" style="width: 200px;">
+                                <button type="reset" id="clear_button" class="btn btn-danger">Reset</button>
+                            </div>    
+                        </div>
                     </div>
                 </div>
-                <div class="form-group col-md-6 mx-auto p-3">
-                    <label for="dogName">Dog Breed Name</label>
-                    <input type="text" class="form-control" name="breed_name" id="breed_name" placeholder="Dog Breed Name">
-                </div>
-                <div class="form-group col-md-6 mx-auto p-3">
-                    <label for="selectSize">Select Size Category</label>
-                        <select class="form-control" id="selectDogSize">
-                            <option>Small</option>
-                            <option>Medium</option>
-                            <option>Large</option>
-                        </select>
-                </div>
-                <div class="form-group col-md-6 mx-auto p-3">
-                    <label for="dogName">Dog Weight</label>
-                    <input type="text" class="form-control" name="dog_weight" id="dog_weight" placeholder="Weight">
-                </div>
-                <div class="form-group col-md-6 mx-auto p-3">
-                    <label for="dogName">Life Expectancy</label>
-                    <input type="text" class="form-control" name="dog_LifeExp" id="dog_LifeExp" placeholder="Life Expectancy">
-                </div>
-                <div class="form-group col-md-6 mx-auto p-3">
-                    <label for="description">Description of Dog</label>
-                    <textarea class="form-control" name="dog_description" id="dog_description" rows="4"></textarea>
-                </div>
-                <div class="form-group col-md-12 p-3">
-                    <div class="mx-auto" style="width: 200px;">
-                        <button type="submit" class="btn btn-primary">Send</button>
-                    </div>
-                </div>
-                <div class="form-group col-md-12 p-3">
-                    <div class="mx-auto" style="width: 200px;">
-                        <button type="reset" class="btn btn-danger">Reset</button>
-                    </div>    
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
 
         <!-- Table of Users Dogs-->
         <div class="container">
@@ -194,6 +198,10 @@
        
         <script>
 
+            function conf(){
+                return window.confirm('Are you sure you want to delete?');
+            }
+
             let usersDogs = [];
             async function getusersDogs() {
                 const response = await fetch('http://localhost:4000/usersDogs');
@@ -212,11 +220,15 @@
                     <tbody>`;
                         for(let i = 0; i < usersDogs.length; i++)
                         {
-                            out += `<tr><td> ${usersDogs[i]._id} </td>
+                            out += `<tr>
+                                <td> <a href="/delusersDogs/${usersDogs[i]._id}" onclick="return conf();"><span class="text-danger bi-x-circle-fill"></span></a>  &nbsp; 
+                                    <a href="#newDogForm" onclick="editForm(${i})" data-bs-toggle="Outline" data-bs-target="#OutlineForm"> <span class="bi-pencil-square text-info"></span></a>  </td>
+                                <td> ${usersDogs[i]._id} </td>
                                 <td> ${usersDogs[i].name} </td>
                                 <td> ${usersDogs[i].weight} </td>
                                 <td> ${usersDogs[i].lifeExp} </td>
-                                <td> ${usersDogs[i].description} </td></tr>`;
+                                <td> ${usersDogs[i].description} </td>
+                            </tr>`;
                         }                         
                         out += `</tbody>
                 <table>`;                                                                
@@ -225,6 +237,17 @@
             }
     
             getusersDogs();
+
+            function editForm(pos){
+                document.getElementById("newDogForm").style = 'display:block;';
+                document.getElementById("txt_id").value = usersDogs[pos]._id;
+                document.getElementById("breed_name").value = usersDogs[pos].name;
+                document.getElementById("dog_weight").value = usersDogs[pos].weight;
+                document.getElementById("dog_LifeExp").value = usersDogs[pos].lifeExp;
+                document.getElementById("dog_description").value = usersDogs[pos].description;
+
+                document.getElementById("clear_button").style = 'display:none;';       
+            }
     
         </script>
 

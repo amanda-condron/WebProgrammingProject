@@ -19,6 +19,7 @@ app.get('/usersDogs',function(req,res){
     res.end(); 
 });
 
+//GET ONE DOG
 app.get('/usersDogs/:id',function(req,res){
     let id = parseInt( req.params.id );
     let found = dao.read(id);
@@ -47,7 +48,6 @@ app.post('/usersDogs',function(req,res){
     {
         console.log('Update Dog');
         newDog.txt_id = req.body.txt_id;
-        console.log('dog id::::: ', newDog.txt_id);
         dao.update(newDog);
     }
     else

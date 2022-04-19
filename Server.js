@@ -1,3 +1,8 @@
+const dotenv = require('dotenv');
+dotenv.config();
+const dbCon = require('./model/DBConnection');
+dbCon.connect();
+
 const expressApp = require('./App');
 
 let hostname = 'localhost';

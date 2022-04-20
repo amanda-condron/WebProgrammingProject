@@ -40,6 +40,11 @@
             </div>
         </header>
 
+        <!-- Table of Medium Dogs-->
+        <div class="container">
+            <div id="MediumDogData"> 
+            </div>
+        </div>
 
          <!-- Footer-->
          <footer class="footer bg-opacity-50">
@@ -57,7 +62,76 @@
             </div>
         </footer>
        
-       
+       <script>
+           let mediumDogs = [
+            {_id:1,name:'American Staffordshire Terrier', weight:'40 - 55 lbs', lifeExp:'12 - 16 years', description: 'American Staffordshire terriers are on the larger side for medium-size dogs, with female Am Staffs typically being slightly smaller than the males. They often appear even larger than they actually are due to their muscular bodies and broad heads.'},
+            { _id:2,name:'Australian Cattle Dog', weight:'35 - 50 lbs', lifeExp:'12 - 16 years', description:'The Australian cattle dog is an active and intelligent dog breed that is right in the middle of the medium-size category. This compact and athletic dog is driven to work.'},
+            { _id:3,name:'Australian Shepard', weight:'40 - 55 lbs', lifeExp:'12 - 15 years', description: 'The Australian shepherd is a very intelligent, high-energy, medium-size dog breed. This herding breed also is quite agile and athletic and therefore well-suited to dog sports, such as flying disc and agility.'},
+            { _id:4,name:'Basset Hound', weight:'40 - 55 lbs', lifeExp:'12 - 13 years', description:'The basset hound is an easygoing dog with a distinct appearance. While these dogs are built low to the ground with short legs, they still weigh solidly in the medium-size range.'},
+            { _id:5,name:'Beared Collie', weight:'45 - 55 lbs', lifeExp:'12 - 14 years', description: 'The bearded collie is a clever and outgoing dog breed. Hovering at around 50 pounds, the dog is actually smaller than it appears to be. Its fluffy coat gives it a large presence, but its frame underneath is lean and agile.'},
+            { _id:6,name:'Border Collie', weight:'30 - 55 lbs', lifeExp:'12 - 15 years', description:'The border collie is one of the smartest dog breeds as well as a high-energy pup. This medium-size dog packs a lot of athleticism into a compact body, and it loves to work.'},
+            { _id:7,name:'Boykin Spaniel', weight:'25 - 35 lbs', lifeExp:'10 - 15 years', description:'The Boykin spaniel is a friendly, alert dog that makes an excellent bird dog and a relatively easygoing house pet. Typically weighing less than 40 pounds, this dog is a great size for flushing out game or simply cuddling on the couch.'},
+            { _id:8,name:'Brittany', weight:'30 - 40 lbs', lifeExp:'12 - 14 years', description:'The Brittany is another medium-size dog that excels at hunting. This high-energy breed thrives on physical activity, whether is it hunting or a dog sport such as agility.'},
+            { _id:9,name:'Bull Terrier', weight:'40 - 55 lbs', lifeExp:'12 - 13 years', description:'The bull terrier is a charming and playful goofball of a dog. These dogs are short and stout, but their large-boned, muscular bodies firmly put them in the medium-size dog category. They often have bursts of energy and clownishness that make them entertaining to be around.'},
+            { _id:10,name:'Cocker Spaniel', weight:'25 - 30 lbs', lifeExp:'10 - 14 years', description:'The cocker spaniel is on the smaller side of the medium range, which makes it a good fit if you do not have a lot of space. These dogs are typically happy and playful companions who need moderate exercise.'},
+            { _id:11,name:'Dalmatian', weight:'45 - 55 lbs', lifeExp:'12 - 14 years', description:'Known for its distinctive spots, the Dalmatian is on the larger end of the medium dog range. This breed is generally quite active and athletic, though some Dalmatians might have a stubborn streak or nervous tendencies, and many are aloof with strangers.'},
+            { _id:12,name:'English Springer Spaniel', weight:'40 - 50 lbs', lifeExp:'12 - 14 years', description:'The English springer spaniel is a medium-size bird dog that is athletic and determined while hunting. At home, it is a friendly companion that aims to please.'},
+            { _id:13,name:'Kerry Blue Terrier', weight:'33 - 40 lbs', lifeExp:'12 - 15 years', description:'The Kerry blue terrier is fairly large for the terrier category, but it still falls into the medium-size dog category overall. The breed is perhaps best known for its coat that comes in varying shades of blue to gray.'},
+            { _id:14,name:'', weight:'8 - 12 lbs', lifeExp:'13 - 18 years', description:'Lively, alert and loving, the Chinese crested can be hairless or coated, and comes in a variety of colors. If you choose a hairless crested, shedding and doggy odor will not be much of a problem, but they are less likely to tolerate cold, so keep them covered.'},
+            { _id:15,name:'', weight:'8 - 10 lbs', lifeExp:'12 - 16 years', description:'This “King of the Toys" is energetic and smart, and is best suited to an owner who can reign in their willful personality. On the plus side, the mini pin is fun-loving and endlessly entertaining, and has a short coat that is easy to groom.'},
+            { _id:16,name:'Cavalier King Charles Spaniel', weight:'13 - 18 lbs', lifeExp:'12 - 15 years', description:'The pampered Cavalier King Charles spaniel is refined and graceful with a royal lineage, but also a down-to-earth companion for any member of the family.'},
+            { _id:17,name:'Boston Terrier', weight:'12 - 24 lbs', lifeExp:'11 - 13 years', description:'Bostons are smart, but as their fighter instinct is still very much a part of who they are, they can be extremely stubborn, so make sure yours has the proper training. Once they do, the spunky, loving and affectionate Boston thrives in every setting or situation.'},
+            { _id:18,name:'Havanese', weight:'7 - 13 lbs', lifeExp:'14 - 16 years', description:'Havanese pups are "on" all the time, meaning if they have an audience they are more than willing to entertain. The breed makes a welcome addition to any family, but make sure to keep your Havanese groomed — their lux coats require daily brushing.'},
+            { _id:19,name:'Norwich Terrier', weight:'12 lbs', lifeExp:'12 - 15 years', description:'This fearless, sturdy breed has boundless energy for play but is also just as content being a lapdog. Remember to keep Norwich terriers safely leashed or within your yard, as these dogs have a high drive for small prey.'},
+            { _id:20,name:'Pekingese', weight:'10 - 14 lbs', lifeExp:'12 - 14 years', description:'This fluffy bundle was once the dog of Chinese royalty and still carries some personality traits of that former life. They can be affectionate or independent and will do whatever suits them at the moment.'},
+            { _id:21,name:'Schipperke', weight:'10 - 16 lbs', lifeExp:'12 - 14 years', description:'The Schipperke is often called "the little black devil" because the breed can be quite mischievous. They’re sturdy, stubborn and smart, which may not be the best traits for every household, as they may end up running it.'},
+            { _id:22,name:'Toy American Eskimo', weight:'6 - 10 lbs', lifeExp:'13 - 15 years', description:'This breed’s soft plumes of white hair have garnered the nickname "The Dog Beautiful." But this dog is not just all looks — they are smart, energetic and have an endless curiosity, which means they’re up for just about any great adventure.'},
+            { _id:23,name:'German Spitz', weight:'20 - 24 lbs', lifeExp:'13 - 15 years', description:'This foot-tall ball of fluff looks like a larger Pomeranian, but that is where the similarity ends. The spitz is also a working dog who was bred to hunt small prey.'},
+            { _id:24,name:'Lowchen', weight:'15 lbs', lifeExp:'13 - 15 years', description:'The Lowchen or “little lion dog” hails from France and Germany and was bred as a royal footwarmer with a distinctive haircut that leaves them fluffy at the front and naked in back. This rare breed has been around since at least the 16th century.'},
+            { _id:25,name:'Papillon', weight:'5 - 10 lbs', lifeExp:'14 - 16 years', description:'The Pap looks like a dainty lap dog with a plumed tail but is nonetheless robust and eager to play. The breed does well in agility competitions and thrives in any climate or home setting.'},
+        ];
+
+        //https://www.thesprucepets.com/medium-dog-breeds-4582517
+        async function getMediumDogs() {
+            //const response = await fetch('http://localhost:4000/smallDog');
+            //smallDogs = await response.json();
+            let out = `<table class="table table-striped table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th> ID </th>
+                        <th> Name </th>
+                        <th> Average Weight </th>
+                        <th> Life Expectancy </th>
+                        <th> Description </th>
+                    </tr>
+                </thead>`;
+            for(let i = 0; i < mediumDogs.length; i++)
+            {
+                out += `<tr><td> ${mediumDogs[i]._id} </td>
+                    <td> ${mediumDogs[i].name} </td>
+                    <td> ${mediumDogs[i].weight} </td>
+                    <td> ${mediumDogs[i].lifeExp} </td>
+                    <td> ${mediumDogs[i].description} </td></tr>`;
+            }                         
+            out += `<table>`;                                                                
+            //JSON.stringify(smallDogs);
+            document.getElementById('MediumDogData').innerHTML = out;
+        }
+
+        getMediumDogs();
+
+       </script>
+
+
+
+
+
+
+
+
+
+
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

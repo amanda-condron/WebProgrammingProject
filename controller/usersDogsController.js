@@ -1,5 +1,5 @@
-const dao = require('../model/usersDogsDaoMem');
-//switch to mongo model file
+//const dao = require('../model/usersDogsDaoMem');
+const dao = require('../model/usersDogsDAOMongo');
 
 //GET ALL DOGS
 exports.getAll = async function(req,res){

@@ -34,7 +34,7 @@ exports.del = async function(id){
     await usersDogsModel.deleteMany();
 } */
 
-exports.update = function(usersDog){
+exports.update = async function(usersDog){
     let usersDogs = await usersDogsModel.updateOne(usersDog);
     return usersDogs;
 }

@@ -49,7 +49,7 @@ exports.postCreateOrUpdate = function(req,res){
 
 //DELETE A DOG
 exports.deleteOne = function(req,res){
-    let id = parseInt(req.params.id);
+    let id = req.params.id;                           //parseInt(req.params.id);
     dao.del(id);
     res.redirect('../index.html');
 }

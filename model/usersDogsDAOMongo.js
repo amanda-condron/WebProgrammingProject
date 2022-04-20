@@ -30,9 +30,9 @@ exports.del = async function(id){
     return usersDogs;
 } 
 
-/*exports.deleteAll = async function(){
+exports.deleteAll = async function(){
     await usersDogsModel.deleteMany();
-} */
+}
 
 exports.update = async function(usersDog){
     let usersDogs = await usersDogsModel.updateOne(usersDog);

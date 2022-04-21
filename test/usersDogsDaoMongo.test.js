@@ -46,15 +46,11 @@ test('Delete a Dog Test', async function(){
 });
 
 test('Update Dog Test', async function(){
-    let allDogs = dao.readAll();
     let existingDog = {name:'TestDog',weight:'7 - 10 lbs',
                   lifeExp:'8 - 12 years',description:'This is an existing dog.'};
     let createdDog = await dao.create(existingDog);
-    //let creDogID = dao.read(createdDog._id);
-    createdDog.description = 'This is a new updated dog.';
-    let updatedDog = dao.update(createdDog);
-   // expect(createdDog).toBe(updatedDog._id);
-    expect(allDogs).toContain(updatedDog);
-    //let updateDog = dao.update(existingDog);
-    //expect(allDogs).toContain(updateDog);  
+    let updatedDog = dao.update(createdDog._id, {description: 'This is a new updated dog.'});
+    let allDogs = dao.readAll();
+    expect(allDogs).toEqual(updatedDog);
+   
 });

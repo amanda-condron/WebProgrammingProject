@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1650497749846" clover="3.2.0">
-  <project timestamp="1650497749846" name="All files">
-    <metrics statements="73" coveredstatements="66" conditionals="16" coveredconditionals="8" methods="15" coveredmethods="14" elements="104" coveredelements="88" complexity="0" loc="73" ncloc="73" packages="1" files="3" classes="3"/>
+<coverage generated="1650551879523" clover="3.2.0">
+  <project timestamp="1650551879523" name="All files">
+    <metrics statements="73" coveredstatements="68" conditionals="16" coveredconditionals="8" methods="15" coveredmethods="15" elements="104" coveredelements="91" complexity="0" loc="73" ncloc="73" packages="1" files="3" classes="3"/>
     <file name="DBConnection.js" path="/Users/amandacondron/Desktop/spring2022/webProgramming/WebProgrammingProject/model/DBConnection.js">
       <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="3"/>
       <line num="1" count="1" type="stmt"/>
@@ -16,7 +16,7 @@
       <line num="15" count="1" type="stmt"/>
     </file>
     <file name="usersDogsDAOMongo.js" path="/Users/amandacondron/Desktop/spring2022/webProgramming/WebProgrammingProject/model/usersDogsDAOMongo.js">
-      <metrics statements="21" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5"/>
+      <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
       <line num="1" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
       <line num="10" count="1" type="stmt"/>
@@ -27,17 +27,17 @@
       <line num="18" count="3" type="stmt"/>
       <line num="19" count="3" type="stmt"/>
       <line num="22" count="1" type="stmt"/>
-      <line num="23" count="3" type="stmt"/>
-      <line num="24" count="3" type="stmt"/>
-      <line num="25" count="3" type="stmt"/>
+      <line num="23" count="4" type="stmt"/>
+      <line num="24" count="4" type="stmt"/>
+      <line num="25" count="4" type="stmt"/>
       <line num="28" count="1" type="stmt"/>
       <line num="29" count="1" type="stmt"/>
       <line num="30" count="1" type="stmt"/>
       <line num="33" count="1" type="stmt"/>
-      <line num="34" count="5" type="stmt"/>
+      <line num="34" count="6" type="stmt"/>
       <line num="37" count="1" type="stmt"/>
-      <line num="38" count="0" type="stmt"/>
-      <line num="39" count="0" type="stmt"/>
+      <line num="38" count="1" type="stmt"/>
+      <line num="39" count="1" type="stmt"/>
     </file>
     <file name="usersDogsDaoMem.js" path="/Users/amandacondron/Desktop/spring2022/webProgramming/WebProgrammingProject/model/usersDogsDaoMem.js">
       <metrics statements="42" coveredstatements="37" conditionals="10" coveredconditionals="5" methods="6" coveredmethods="6"/>
